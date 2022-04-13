@@ -9,6 +9,7 @@ import { QuestionButtonComponent } from './question-button/question-button.compo
 import { ResultComponent } from './result/result.component';
 import { AppRoutingModule } from './app.routing';
 import { HomeComponent } from './home/home.component';
+import { DownloadComponent } from './download/download.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HomeComponent } from './home/home.component';
     QuestionButtonComponent,
     ResultComponent,
     HomeComponent,
+    DownloadComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

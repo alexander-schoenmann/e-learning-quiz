@@ -1,62 +1,83 @@
-<div class="my-28 flex-col items-center justify-center">
-  <h1 class="text-center font-bold text-5xl min-w-max mb-8">
-    {{ question.title }}
-  </h1>
-  <div class="flex flex-row justify-center space-x-10">
-    <div *ngFor="let answer of question.answers">
-      {{ answer.text }}
-    </div>
+<div class="mx-40 mt-3">
+
+  <div class="flex mb-6">
+    <div class="h-2 w-1/6 bg-orange-400 rounded-md mr-3"></div>
+    <div class="h-2 w-1/6 bg-orange-400 rounded-md mx-3"></div>
+    <div class="h-2 w-1/6 bg-gray-200 rounded-md mx-3"></div>
+    <div class="h-2 w-1/6 bg-gray-200 rounded-md mx-3"></div>
+    <div class="h-2 w-1/6 bg-gray-200 rounded-md mx-3"></div>
+    <div class="h-2 w-1/6 bg-gray-200 rounded-md ml-3"></div>
   </div>
 
-  <div class="bg-teal-500 rounded-2xl p-8 text-white mt-8 relative">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="h-10 w-10 absolute top-2 left-2"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      stroke-width="2"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-      />
-    </svg>
-    <p class="pl-6">Glückwunsch! Deine Antwort ist richtig Zur Erklärung...</p>
+  <div class="flex items-center	">
+    <img class="h-6 inline" src="./assets/images/back-arrow.png">
+    <p class="ml-2">Zurück</p>
   </div>
-  <div class="bg-red-500 rounded-2xl p-8 text-white mt-8 relative">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="h-10 w-10 absolute top-2 left-2"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      stroke-width="2"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-      />
-    </svg>
-    <p class="pl-6">
-      Schade! Deine Antwort ist leider falsch. Zur Erklärung: ...
-    </p>
+
+  <div class="flex flex-col justify-content content-center mt-12">
+    <h4 class="text-1xl mb-2 font-bold text-center">Frage <span>3/6</span></h4>
+    <h2 class="text-3xl mb-8 font-bold text-center">{{ question.title }}</h2>
   </div>
-  <button
-    class="mt-8 m-auto flex bg-teal-500 justify-center duration-300 rounded-2xl w-32 hover:bg-teal-700 text-white py-3 px-4 disabled:bg-gray-300"
-  >
-    Weiter
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="h-6 w-6 ml-2"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      stroke-width="2"
+
+  <!-- Antwortmöglichkeiten -->
+  <div class="my-14 flex-col items-center justify-center">
+    <div class="flex flex-row justify-center space-x-10">
+      <div *ngFor="let answer of question.answers">
+        {{ answer.text }}
+      </div>
+    </div>
+
+    <div class="bg-teal-500 rounded-2xl p-8 text-white mt-8 relative">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-10 w-10 absolute top-2 left-2"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+      <p class="pl-6">Glückwunsch! Deine Antwort ist richtig Zur Erklärung...</p>
+    </div>
+    <div class="bg-red-500 rounded-2xl p-8 text-white mt-8 relative">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-10 w-10 absolute top-2 left-2"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+      <p class="pl-6">
+        Schade! Deine Antwort ist leider falsch. Zur Erklärung: ...
+      </p>
+    </div>
+    <button
+      class="mt-8 m-auto flex bg-teal-500 justify-center duration-300 rounded-2xl w-32 hover:bg-teal-700 text-white py-3 px-4 disabled:bg-gray-300"
     >
-      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-    </svg>
-  </button>
+      Weiter
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 ml-2"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+
 </div>

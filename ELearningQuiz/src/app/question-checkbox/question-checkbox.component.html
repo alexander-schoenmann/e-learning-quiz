@@ -1,1 +1,4 @@
-<p>question-checkbox works!</p>
+<h1>{{ question.title }}</h1>
+<div *ngFor="let answer of question.answers">
+  <p>{{ answer }}</p>
+</div>

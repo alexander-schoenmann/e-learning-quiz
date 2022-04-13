@@ -7,6 +7,8 @@ import { QuestionRadioComponent } from './question-radio/question-radio.componen
 import { QuestionTemplateComponent } from './question-template/question-template.component';
 import { QuestionButtonComponent } from './question-button/question-button.component';
 import { ResultComponent } from './result/result.component';
+import { AppRoutingModule } from './app.routing';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,8 +18,9 @@ import { ResultComponent } from './result/result.component';
     QuestionTemplateComponent,
     QuestionButtonComponent,
     ResultComponent,
+    HomeComponent,
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })

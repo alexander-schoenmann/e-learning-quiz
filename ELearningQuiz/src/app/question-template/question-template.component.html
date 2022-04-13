@@ -1,6 +1,6 @@
 <h1>Frageseite</h1>
 
-<div *ngFor="let question of questions; let i = index">
+<div *ngFor="let question of questions | slice: 1; let i = index">
   <p>Frage {{ i }} von {{ questions.length }}</p>
   <app-question-radio
     [question]="question"
@@ -20,4 +20,6 @@
     class="hidden"
     [ngClass]="{ block: question.id === i }"
   ></app-question-button>
+
+  <button routerLink="{{ question.id }}" class="p-4">Weiter</button>
 </div>

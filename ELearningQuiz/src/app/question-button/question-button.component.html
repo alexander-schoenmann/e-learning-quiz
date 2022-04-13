@@ -1,1 +1,4 @@
-<p>question-button works!</p>
+<h1 class="">{{ question.title }}</h1>
+<div *ngFor="let answer of question.answers" class="flex justify-start">
+  <button class="p-3">{{ answer }}</button>
+</div>

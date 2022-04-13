@@ -1,1 +1,7 @@
 <h1>Startseite</h1>
+
+<button (click)="toggle()"></button>
+<span *ngIf="isClicked">
+  <app-question-template></app-question-template>
+</span>
+

@@ -3,8 +3,13 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
+
 export class AppComponent {
-  title = 'ELearningQuiz';
+  isClicked: boolean = false;
+
+  public toggle(): void {
+    this.isClicked = !this.isClicked;
+  }
 }

@@ -1,0 +1,23 @@
+<h1>Frageseite</h1>
+
+<div *ngFor="let question of questions; let i = index">
+  <p>Frage {{ i }} von {{ questions.length }}</p>
+  <app-question-radio
+    [question]="question"
+    *ngIf="question.type === 'radio'"
+    class="hidden"
+    [ngClass]="{ block: question.id === i }"
+  ></app-question-radio>
+  <app-question-checkbox
+    [question]="question"
+    *ngIf="question.type === 'checkbox'"
+    class="hidden"
+    [ngClass]="{ block: question.id === i }"
+  ></app-question-checkbox>
+  <app-question-button
+    [question]="question"
+    *ngIf="question.type === 'button'"
+    class="hidden"
+    [ngClass]="{ block: question.id === i }"
+  ></app-question-button>
+</div>

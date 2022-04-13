@@ -12,21 +12,30 @@ export class QuestionTemplateComponent implements OnInit {
     {
       id: 1,
       type: 'radio',
-      title: 'lorem ipsum',
-      answers: ['lorem ipsum', '123', 'hallo'],
+      title: 'lorem ipsum?',
+      answers: [
+        { text: '124', correct: true },
+        { text: 'hallo', correct: false },
+      ],
     },
     {
       id: 2,
       type: 'button',
-      title: 'lorem ipsum',
+      title: 'lorem ipsum?',
       image: './',
-      answers: ['Ja', 'Nein'],
+      answers: [
+        { text: 'Ja', correct: true },
+        { text: 'Nein', correct: false },
+      ],
     },
     {
       id: 3,
       type: 'checkbox',
-      title: 'lorem ipsum',
-      answers: ['lorem ipsum', '123', 'hallo'],
+      title: 'lorem ipsum?',
+      answers: [
+        { text: 'abdads', correct: true },
+        { text: 'dsfds', correct: false },
+      ],
     },
   ];
 

@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class QuestionRadioComponent implements OnInit {
   @Input() question: any;
+
   constructor() {}
 
   ngOnInit(): void {}

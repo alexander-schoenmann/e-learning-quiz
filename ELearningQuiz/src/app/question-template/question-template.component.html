@@ -1,11 +1,10 @@
-  <div class="flex flex-1 items-center justify-center">
-  <div *ngFor="let question of questions; let i = index" class="flex-1">
-    <!--     <p class="font-bold">Frage {{ i + 1 }}/{{ questions.length }}</p> -->
+<div *ngFor="let question of questions; let i = index">
+  <!--     <p class="font-bold">Frage {{ i + 1 }}/{{ questions.length }}</p> -->
 
-       <app-question-radio
-      [question]="question"
-      *ngIf="question.type === 'radio' && question.id === i + 1"
-    ></app-question-radio>
+  <app-question-radio
+    [question]="question"
+    *ngIf="question.type === 'radio' && question.id === i + 1"
+  ></app-question-radio>
 
     <app-question-checkbox
       [question]="question"
@@ -17,11 +16,10 @@
       *ngIf="question.type === 'button' && question.id === i + 1"
     ></app-question-button>
 
-    <!--     <button
+  <!--     <button
       routerLink="{{ question.id }}"
       class="bg-blue-600 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded"
     >
       Weiter
     </button> -->
-  </div>
 </div>

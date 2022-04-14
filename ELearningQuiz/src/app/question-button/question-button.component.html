@@ -15,15 +15,15 @@
 
   <div class="flex flex-col justify-content content-center mt-12">
     <h4 class="text-1xl mb-2 font-bold text-center">Frage <span>3/6</span></h4>
-    <h2 class="text-3xl mb-8 font-bold text-center">{{ question.title }}</h2>
+    <h2 class="text-4xl mb-12 font-bold text-center">{{ question.title }}</h2>
   </div>
 
   <!-- Antwortmöglichkeiten -->
-  <div class="my-14">
+  <div class="">
     <img
       src="../../assets/images/example.jpg"
       alt="Phishing Example"
-      class="mb-8"
+      class="mb-12 m-auto w-96"
     />
     <div class="flex flex-row justify-center space-x-10">
       <div *ngFor="let answer of question.answers">
@@ -35,7 +35,9 @@
       </div>
     </div>
 
-    <div class="bg-teal-500 rounded-2xl p-8 text-white mt-8 relative">
+    <div
+      class="m-auto w-96 bg-teal-500 rounded-2xl p-8 text-white mt-12 relative"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-10 w-10 absolute top-2 left-2"
@@ -54,7 +56,9 @@
         Glückwunsch! Deine Antwort ist richtig Zur Erklärung...
       </p>
     </div>
-    <div class="bg-red-500 rounded-2xl p-8 text-white mt-8 relative">
+    <div
+      class="m-auto w-96 bg-red-500 rounded-2xl p-8 text-white mt-12 relative"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-10 w-10 absolute top-2 left-2"
@@ -74,7 +78,7 @@
       </p>
     </div>
     <button
-      class="mt-8 m-auto flex bg-teal-500 justify-center duration-300 rounded-2xl w-32 hover:bg-teal-700 text-white py-3 px-4 disabled:bg-gray-300"
+      class="mt-12 m-auto flex bg-teal-500 justify-center duration-300 rounded-2xl w-32 hover:bg-teal-700 text-white py-3 px-4 disabled:bg-gray-300"
     >
       Weiter
       <svg

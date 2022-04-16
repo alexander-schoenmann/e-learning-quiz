@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-result',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultComponent implements OnInit {
 
-  constructor() { }
+  public correctAnswers: Number;
+  public showSucces = false;
+  public showFailure = false;
 
-  ngOnInit(): void {
+  constructor(
+    private route: ActivatedRoute
+  ) {
+    this.correctAnswers = this.route.snapshot.params['result'];
   }
 
+  ngOnInit(): void {
+    if (this.correctAnswers >= 2) this.showSucces = true;
+    else this.showFailure = true;
+  }
 }

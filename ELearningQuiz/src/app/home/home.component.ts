@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  public showProgress = false;
+
+  constructor(
+    private route: ActivatedRoute
+  ) {
+    this.showProgress = !!this.route.snapshot.params['progress'];
+  }
 
   ngOnInit(): void {
   }
-
 }

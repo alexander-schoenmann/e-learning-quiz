@@ -8,8 +8,9 @@ import {DownloadComponent} from "./download/download.component";
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'home/:progress', component: HomeComponent },
   { path: 'quiz', component: QuestionTemplateComponent },
-  { path: 'result', component: ResultComponent },
+  { path: 'result/:result', component: ResultComponent },
   { path: 'download', component: DownloadComponent },
 ];
 

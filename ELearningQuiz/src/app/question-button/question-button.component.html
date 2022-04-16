@@ -1,42 +1,54 @@
 <div class="mx-40 mt-3">
-  <div class="flex mb-6">
-    <div class="h-2 w-1/6 bg-orange-400 rounded-md mr-3"></div>
-    <div class="h-2 w-1/6 bg-orange-400 rounded-md mx-3"></div>
-    <div class="h-2 w-1/6 bg-gray-200 rounded-md mx-3"></div>
-    <div class="h-2 w-1/6 bg-gray-200 rounded-md mx-3"></div>
-    <div class="h-2 w-1/6 bg-gray-200 rounded-md mx-3"></div>
-    <div class="h-2 w-1/6 bg-gray-200 rounded-md ml-3"></div>
-  </div>
 
-  <button class="flex items-center">
+  <a class="flex items-center" routerLink="../home">
     <img class="h-6 inline" src="./assets/images/back-arrow.png" />
-    <p class="ml-2">Zurück</p>
-  </button>
+    <p class="ml-2">Zurück zur Startseite</p>
+  </a>
 
-  <div class="flex flex-col justify-content content-center mt-12">
-    <h4 class="text-1xl mb-2 font-bold text-center">Frage <span>3/6</span></h4>
-    <h2 class="text-4xl mb-12 font-bold text-center">{{ question.title }}</h2>
+  <div class="flex flex-col mb-12 justify-content content-center mt-12">
+    <h4 class="text-1xl font-bold text-center">Frage <span>{{ question.id }}/3</span></h4>
+    <h2 class="text-4xl font-bold text-center">{{ question.title }}</h2>
   </div>
 
   <!-- Antwortmöglichkeiten -->
   <div class="">
     <img
-      src="../../assets/images/example.jpg"
+      src="{{question.image}}"
       alt="Phishing Example"
       class="mb-12 m-auto w-96"
     />
-    <div class="flex flex-row justify-center space-x-10">
-      <div *ngFor="let answer of question.answers">
-        <button
-          class="bg-white border-gray-300 border-2 rounded-xl w-24 duration-300 hover:border-teal-500 focus:border-teal-500 text-black py-2 px-4"
+
+    <div class="flex flex-row justify-center space-x-10"
+         [ngClass]="hideInputs == false ? '' : 'hide'"
+    >
+        <div type="button"
+             class="custom-btn bg-white border-gray-300 border-2 rounded-xl w-24 duration-300 hover:border-teal-500 focus:border-teal-500 text-black py-2 px-4"
+             [attr.data-answerCorrect] = "question.answers[0].correct"
+             [attr.data-answerText] = "question.answers[0].text"
+             [attr.data-answerDescription] = "question.answers[0].description"
+             (click)="selectEntry1($event.target)"
+             [ngClass]="buttonStatus1 === true ? 'custom-btn-active' : ''"
         >
-          {{ answer.text }}
-        </button>
-      </div>
+          {{ question.answers[0].text }}
+        </div>
+
+        <div type="button"
+             class="custom-btn bg-white border-gray-300 border-2 rounded-xl w-24 duration-300 hover:border-teal-500 focus:border-teal-500 text-black py-2 px-4"
+             [attr.data-answerCorrect] = "question.answers[1].correct"
+             [attr.data-answerText] = "question.answers[1].text"
+             [attr.data-answerDescription] = "question.answers[1].description"
+             (click)="selectEntry2($event.target)"
+             [ngClass]="buttonStatus2 === true ? 'custom-btn-active' : ''"
+        >
+          {{ question.answers[1].text }}
+        </div>
     </div>
 
+
+    <!-- Richtig -->
     <div
       class="m-auto w-96 bg-teal-500 rounded-2xl p-8 text-white mt-12 relative"
+      [ngClass]="showCorrectAnswerField === true ? 'show' : 'hide'"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -53,11 +65,15 @@
         />
       </svg>
       <p class="pl-6">
-        Glückwunsch! Deine Antwort ist richtig Zur Erklärung...
+        Glückwunsch! Deine Antwort ({{selectedAnswerText}}) ist richtig!
+        {{selectedAnswerDescription}}
       </p>
     </div>
+
+    <!-- Falsch -->
     <div
-      class="m-auto w-96 bg-red-500 rounded-2xl p-8 text-white mt-12 relative"
+      class=" m-auto w-96 bg-red-500 rounded-2xl p-8 text-white mt-12 relative"
+      [ngClass]="showFalseAnswerField == true ? '' : 'hide'"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -74,13 +90,30 @@
         />
       </svg>
       <p class="pl-6">
-        Schade! Deine Antwort ist leider falsch. Zur Erklärung: ...
+        Schade! Deine Antwort ({{selectedAnswerText}}) ist leider falsch!
+        {{selectedAnswerDescription}}
       </p>
     </div>
-    <button
-      class="mt-12 m-auto flex bg-teal-500 justify-center duration-300 rounded-2xl w-32 hover:bg-teal-700 text-white py-3 px-4 disabled:bg-gray-300"
+
+    <!-- No Answer -->
+    <div
+      class="m-auto w-96 bg-red-500 rounded-2xl p-8 text-white mt-12 relative"
+      [ngClass]="showHintToAnswerQuestion == true ? '' : 'hide'"
     >
-      Weiter
+      <p class="pl-6">
+        Bitte wähle eine Antwort aus.
+      </p>
+    </div>
+
+
+    <!-- Absenden -->
+    <a
+      class="mt-12 m-auto flex bg-teal-500 justify-center duration-300
+      rounded-2xl w-32 hover:bg-teal-700 text-white py-3 px-4 disabled:bg-gray-300"
+      (click)="calculateResult()"
+      [ngClass]="showSubmitButton == true ? '' : 'hide'"
+    >
+      Absenden
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6 ml-2"
@@ -91,6 +124,24 @@
       >
         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
       </svg>
-    </button>
+    </a>
+
+    <!-- Nächste Frage -->
+    <a class="mt-12 m-auto flex bg-teal-500 justify-center
+                   duration-300 rounded-2xl w-32 hover:bg-teal-700 text-white
+                   py-3 px-4 disabled:bg-gray-300" (click)="navigateToNextQuestion()"
+       [ngClass]="showNextButton == true ? '' : 'hide'"
+    > Nächste Frage
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 ml-2"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
   </div>
 </div>

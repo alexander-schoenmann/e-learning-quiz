@@ -15,7 +15,7 @@ export class QuestionTemplateComponent implements OnInit {
     {
       id: 1,
       type: 'radio',
-      title: 'Michael1998 - Findest du dieses Passwort sicher ?',
+      title: 'Michael1998 - Findest du dieses Passwort sicher?',
       answers: [
         { text: 'Ja', correct: false, description: "Das Passwort sollte keine personenbezogenen Inhalte wie Name oder Passwort sein." },
         { text: 'Nein', correct: true, description: "Das Passwort sollte keine personenbezogenen Inhalte wie Name oder Passwort sein." },
@@ -24,11 +24,11 @@ export class QuestionTemplateComponent implements OnInit {
     {
       id: 2,
       type: 'button',
-      title: 'lorem ipsum?',
-      image: './',
+      title: 'Handelt es sich hierbei um eine Phishing E-Mail?',
+      image: '../../assets/images/example.jpg',
       answers: [
-        { text: 'Ja', correct: true },
-        { text: 'Nein', correct: false },
+        { text: 'Ja', correct: true, description: "Wir verwenden Global Pay nicht in unserem Unternehmen. Der Anhang enthält somit wahrscheinlich Schadsoftware."},
+        { text: 'Nein', correct: false, description: "Wir verwenden Global Pay nicht in unserem Unternehmen. Der Anhang enthält somit wahrscheinlich Schadsoftware." },
       ],
     },
     {

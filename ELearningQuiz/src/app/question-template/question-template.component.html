@@ -17,7 +17,12 @@
     *ngIf="progress==0"
 ></app-question-radio>
 
-<div *ngIf="progress==1"> {{correctAnswers}}</div>
+<app-question-button
+  (updateResultCounter)="updateProgress()"
+  (updateCorrectAnswerAmount)="updateCorrectAnswerCounter($event)"
+  [question]="questions[1]"
+  *ngIf="progress==1"
+></app-question-button>
 
 <!--
 <app-question-checkbox
@@ -26,10 +31,4 @@
 ></app-question-checkbox>
 -->
 
-<!--
-    <app-question-button
-    [question]="question"
-    *ngIf="question.type === 'button' && question.id === i + 1"
-  ></app-question-button>
 
-  -->

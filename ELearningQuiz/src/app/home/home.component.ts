@@ -9,11 +9,15 @@ import {ActivatedRoute} from "@angular/router";
 export class HomeComponent implements OnInit {
 
   public showProgress = false;
+  public quizLink = "../quiz"
 
   constructor(
     private route: ActivatedRoute
   ) {
     this.showProgress = !!this.route.snapshot.params['progress'];
+    if (this.showProgress) {
+      this.quizLink = "../../quiz"
+    }
   }
 
   ngOnInit(): void {

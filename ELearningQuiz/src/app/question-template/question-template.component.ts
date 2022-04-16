@@ -8,14 +8,16 @@ import { Component, OnInit } from '@angular/core';
 export class QuestionTemplateComponent implements OnInit {
   constructor() {}
 
+  public progress: number = 0;
+
   public questions = [
     {
       id: 1,
       type: 'radio',
-      title: 'lorem ipsum?',
+      title: 'Michael1998 - Findest du dieses Passwort sicher ?',
       answers: [
-        { text: '124', correct: true },
-        { text: 'hallo', correct: false },
+        { text: 'Ja', correct: false, description: "Das Passwort sollte keine personenbezogenen Inhalte wie Name oder Passwort sein." },
+        { text: 'Nein', correct: true, description: "Das Passwort sollte keine personenbezogenen Inhalte wie Name oder Passwort sein." },
       ],
     },
     {
@@ -40,4 +42,8 @@ export class QuestionTemplateComponent implements OnInit {
   ];
 
   ngOnInit(): void {}
+
+  updateProgress () {
+    this.progress += 1;
+  }
 }

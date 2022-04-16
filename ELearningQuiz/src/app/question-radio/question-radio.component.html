@@ -1,28 +1,21 @@
 <div class="mx-40 mt-3">
-  <div class="flex mb-6">
-    <div class="h-2 w-1/6 bg-orange-400 rounded-md mr-3"></div>
-    <div class="h-2 w-1/6 bg-orange-400 rounded-md mx-3"></div>
-    <div class="h-2 w-1/6 bg-gray-200 rounded-md mx-3"></div>
-    <div class="h-2 w-1/6 bg-gray-200 rounded-md mx-3"></div>
-    <div class="h-2 w-1/6 bg-gray-200 rounded-md mx-3"></div>
-    <div class="h-2 w-1/6 bg-gray-200 rounded-md ml-3"></div>
-  </div>
 
-  <button class="flex items-center">
+  <a class="flex items-center" routerLink="../home">
     <img class="h-6 inline" src="./assets/images/back-arrow.png" />
-    <p class="ml-2">Zurück</p>
-  </button>
+    <p class="ml-2">Zurück zur Startseite</p>
+  </a>
 
   <div class="flex flex-col mb-12 justify-content content-center mt-12">
-    <h4 class="text-1xl font-bold text-center">Frage <span>3/6</span></h4>
+    <h4 class="text-1xl font-bold text-center">Frage <span>{{ question.id }}/6</span></h4>
     <h2 class="text-4xl font-bold text-center">{{ question.title }}</h2>
   </div>
 
   <!-- Antwortmöglichkeiten -->
-  <div class="flex-col items-center justify-center">
+  <form class="flex-col items-center justify-center">
     <div
       *ngFor="let answer of question.answers"
       class="bg-gray-100 m-auto w-1/3 rounded-lg mt-4 duration-150 hover:border-2 hover:border-teal-500"
+      [ngClass]="hideInputs == false ? '' : 'hide'"
     >
       <div class="flex flex-1 justify-start p-2">
         <label
@@ -31,17 +24,22 @@
         >
           <input
             class="mr-5 form-check-input appearance-none rounded-full h-5 w-5 border border-gray-300 bg-white checked:bg-teal-500 checked:border-teal-500 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left cursor-pointer"
-            type="radio"
+            type="radio" (change)="onItemChange($event.target)"
             name="{{ question.id }}"
             id="{{ question.id }}"
+            value="{{ answer.correct }}"
+            [attr.data-answerText] = "answer.text"
+            [attr.data-answerDescription] = "answer.description"
           />
           {{ answer.text }}
         </label>
       </div>
     </div>
 
+    <!-- Richtig -->
     <div
       class="m-auto w-96 bg-teal-500 rounded-2xl p-8 text-white mt-12 relative"
+      [ngClass]="showCorrectAnswerField === true ? 'show' : 'hide'"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -58,11 +56,15 @@
         />
       </svg>
       <p class="pl-6">
-        Glückwunsch! Deine Antwort ist richtig Zur Erklärung...
+        Glückwunsch! Deine Antwort ({{selectedAnswerText}}) ist richtig!
+        {{selectedAnswerDescription}}
       </p>
     </div>
+
+    <!-- Falsch -->
     <div
-      class="m-auto w-96 bg-red-500 rounded-2xl p-8 text-white mt-12 relative"
+      class=" m-auto w-96 bg-red-500 rounded-2xl p-8 text-white mt-12 relative"
+      [ngClass]="showFalseAnswerField == true ? '' : 'hide'"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -79,13 +81,27 @@
         />
       </svg>
       <p class="pl-6">
-        Schade! Deine Antwort ist leider falsch. Zur Erklärung: ...
+        Schade! Deine Antwort ({{selectedAnswerText}}) ist leider falsch!
+        {{selectedAnswerDescription}}
       </p>
     </div>
-    <button
-      class="mt-12 m-auto flex bg-teal-500 justify-center duration-300 rounded-2xl w-32 hover:bg-teal-700 text-white py-3 px-4 disabled:bg-gray-300"
+
+    <!-- No Answer -->
+    <div
+      class="m-auto w-96 bg-red-500 rounded-2xl p-8 text-white mt-12 relative"
+      [ngClass]="showHintToAnswerQuestion == true ? '' : 'hide'"
     >
-      Weiter
+      <p class="pl-6">
+       Bitte wähle eine Antwort aus.
+      </p>
+    </div>
+
+
+    <a class="mt-12 m-auto flex bg-teal-500 justify-center
+                   duration-300 rounded-2xl w-32 hover:bg-teal-700 text-white
+                   py-3 px-4 disabled:bg-gray-300" (click)="calculateResult()"
+       [ngClass]="showSubmitButton == true ? '' : 'hide'"
+    > Absenden
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6 ml-2"
@@ -96,6 +112,26 @@
       >
         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
       </svg>
-    </button>
-  </div>
+    </a>
+
+
+    <a class="mt-12 m-auto flex bg-teal-500 justify-center
+                   duration-300 rounded-2xl w-32 hover:bg-teal-700 text-white
+                   py-3 px-4 disabled:bg-gray-300" (click)="navigateToNextQuestion()"
+       [ngClass]="showNextButton == true ? '' : 'hide'"
+    > Nächste Frage
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6 ml-2"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+
+
+  </form>
 </div>

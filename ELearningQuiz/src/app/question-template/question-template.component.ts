@@ -9,6 +9,7 @@ export class QuestionTemplateComponent implements OnInit {
   constructor() {}
 
   public progress: number = 0;
+  public correctAnswers = 0;
 
   public questions = [
     {
@@ -45,5 +46,9 @@ export class QuestionTemplateComponent implements OnInit {
 
   updateProgress () {
     this.progress += 1;
+  }
+
+  updateCorrectAnswerCounter (number: number) {
+    this.correctAnswers += number;
   }
 }

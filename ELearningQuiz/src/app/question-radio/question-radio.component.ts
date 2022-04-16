@@ -23,6 +23,7 @@ export class QuestionRadioComponent implements OnInit {
 
 
   @Output() updateResultCounter = new EventEmitter<any>();
+  @Output() updateCorrectAnswerAmount = new EventEmitter<number>();
 
   constructor() {}
 
@@ -62,5 +63,13 @@ export class QuestionRadioComponent implements OnInit {
 
   public navigateToNextQuestion () {
     this.updateResultCounter.emit();
+    let counter = 0;
+
+    if (this.selectedAnswer == "true") {
+      counter +=1;
+      this.updateCorrectAnswerAmount.emit(counter);
+    } else {
+      this.updateCorrectAnswerAmount.emit(counter);
+    }
   }
 }

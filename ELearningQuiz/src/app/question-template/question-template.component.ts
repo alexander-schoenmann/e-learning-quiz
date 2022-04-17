@@ -34,11 +34,11 @@ export class QuestionTemplateComponent implements OnInit {
     {
       id: 3,
       type: 'checkbox',
-      title: 'Welche Vorteile bringt eine VPN mit sich?',
+      title: 'Welche Vorteile bringt ein VPN mit sich?',
       answers: [
         { text: 'Sichere Verbindung für Fernarbeit', correct: true, description: "Unternehmen müssen heute mehr denn je auf die Sicherheit im Internet achten. Da mehr Menschen als je zuvor von zu Hause aus arbeiten, sind sensible Unternehmens- und Kundendaten einem höheren Risiko des Diebstahls ausgesetzt.", answerId : 0},
         { text: 'Sicherheit durch Anonymität', correct: true, description: "Mit einer VPN wird dein Standort anonym gehalten.", answerId : 1},
-        { text: 'Schnelle Verbindungsgeschwindigkeiten', correct: false, description: "Durch die Nutzung von VPNs verlangsamt sich meist die Internetgeschwindigkeit.", answerId : 2},
+        { text: 'Schutz vor Malware', correct: false, description: "Ein VPN schützt ein Gerät nicht vor den meisten Formen von Malware (wie Viren, Spyware und Ransomware).", answerId : 2},
       ],
     },
   ];

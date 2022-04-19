@@ -89,7 +89,7 @@ export class QuestionCheckboxComponent implements OnInit {
     this.updateResultCounter.emit();
     let counter = 0;
 
-    if (this.selectedAnswer == "true") {
+    if (this.answerValues.filter(item => item == "true").length == 2) {
       counter +=1;
       this.updateCorrectAnswerAmount.emit(counter);
     } else {

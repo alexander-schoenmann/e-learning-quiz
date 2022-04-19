@@ -15,7 +15,7 @@ export class QuestionTemplateComponent implements OnInit {
     {
       id: 1,
       type: 'radio',
-      title: 'Michael1998 - Findest du dieses Passwort sicher?',
+      title: 'Findest du das Passwort "Michael1998" sicher?',
       answers: [
         { text: 'Ja', correct: false, description: "Das Passwort sollte keine personenbezogenen Inhalte wie Name oder Passwort sein." },
         { text: 'Nein', correct: true, description: "Das Passwort sollte keine personenbezogenen Inhalte wie Name oder Passwort sein." },
@@ -35,6 +35,7 @@ export class QuestionTemplateComponent implements OnInit {
       id: 3,
       type: 'checkbox',
       title: 'Welche Vorteile bringt ein VPN mit sich?',
+      subtitle: 'Mehrere Antworten möglich!',
       answers: [
         { text: 'Sichere Verbindung für Fernarbeit', correct: true, description: "Unternehmen müssen heute mehr denn je auf die Sicherheit im Internet achten. Da mehr Menschen als je zuvor von zu Hause aus arbeiten, sind sensible Unternehmens- und Kundendaten einem höheren Risiko des Diebstahls ausgesetzt.", answerId : 0},
         { text: 'Sicherheit durch Anonymität', correct: true, description: "Mit einer VPN wird dein Standort anonym gehalten.", answerId : 1},

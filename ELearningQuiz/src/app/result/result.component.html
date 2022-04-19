@@ -11,15 +11,18 @@
     </div>
   </div>
 
-  <div class="flex flex-col justify-content content-center"
-       [ngClass]="showSucces == true ? '' : 'hide'" >
+  <div
+    class="flex flex-col justify-content content-center"
+    [ngClass]="showSucces == true ? '' : 'hide'"
+  >
     <h2
       class="text-5xl mb-6 font-bold text-center underline decoration-orange-400"
     >
       Glückwunsch!
     </h2>
     <h3 class="text-1xl mb-10 text-center">
-      Du hast {{correctAnswers}} von 3 Fragen richtig und diese Lektion bestanden!
+      Du hast {{ correctAnswers }} von 3 Fragen richtig und diese Lektion
+      bestanden!
     </h3>
     <div class="flex">
       <div class="m-auto">
@@ -33,24 +36,28 @@
     </div>
   </div>
 
-  <div class="flex flex-col justify-content content-center"
-       [ngClass]="showFailure == true ? '' : 'hide'" >
+  <div
+    class="flex flex-col justify-content content-center"
+    [ngClass]="showFailure == true ? '' : 'hide'"
+  >
     <h2
       class="text-5xl mb-6 font-bold text-center underline decoration-orange-400"
     >
       Schade!
     </h2>
     <h3 class="text-1xl mb-10 text-center">
-      Du hast {{correctAnswers}} von 3 Fragen richtig und diese Lektion nicht bestanden!
+      Du hast {{ correctAnswers }} von 3 Fragen richtig und diese Lektion nicht
+      bestanden!
     </h3>
     <div class="flex">
       <div class="m-auto">
-        <a routerLink="/quiz" class="bg-orange-400 text-white px-6 py-3 rounded-xl hover:bg-orange-500"
+        <a
+          routerLink="/quiz"
+          class="bg-orange-400 text-white px-6 py-3 rounded-xl hover:bg-orange-500"
         >
-          Erneut versuchen.
+          Erneut versuchen
         </a>
       </div>
     </div>
   </div>
-
 </div>

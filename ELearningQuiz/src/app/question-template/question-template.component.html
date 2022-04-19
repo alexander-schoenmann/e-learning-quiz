@@ -12,10 +12,6 @@
       class="h-2 w-1/3 rounded-md mx-3"
       [ngClass]="progress >= 2 ? 'bg-orange-400' : 'bg-gray-200'"
     ></div>
-    <div
-      class="h-2 w-1/3 rounded-md mx-3"
-      [ngClass]="progress >= 3 ? 'bg-orange-400' : 'bg-gray-200'"
-    ></div>
   </div>
 </div>
 
@@ -37,23 +33,6 @@
   (updateResultCounter)="updateProgress()"
   (updateCorrectAnswerAmount)="updateCorrectAnswerCounter($event)"
   [question]="questions[2]"
-  *ngIf="progress == 2"
+  [correctAnswers]="correctAnswers"
+  *ngIf="progress >= 2"
 ></app-question-checkbox>
-
-<div class="flex flex-col justify-content content-center" *ngIf="progress == 3">
-  <h2
-    class="spacing-bottom spacing-top text-5xl mb-6 font-bold text-center underline decoration-orange-400"
-  >
-    Du hast alle Fragen absolviert!
-  </h2>
-  <div class="flex spacing-top">
-    <div class="m-auto">
-      <a
-        routerLink="../result/{{ correctAnswers }}"
-        class="bg-orange-400 text-white px-6 py-3 rounded-xl hover:bg-orange-500"
-      >
-        Zum Ergebnis
-      </a>
-    </div>
-  </div>
-</div>

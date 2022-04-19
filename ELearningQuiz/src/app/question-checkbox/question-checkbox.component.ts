@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-question-checkbox',
@@ -7,7 +8,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class QuestionCheckboxComponent implements OnInit {
   @Input() question: any;
-
+  @Input() correctAnswers: any;
 
   public answerValues : string[] = [];
 
@@ -30,7 +31,10 @@ export class QuestionCheckboxComponent implements OnInit {
   @Output() updateResultCounter = new EventEmitter<any>();
   @Output() updateCorrectAnswerAmount = new EventEmitter<number>();
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit(): void {}
 
@@ -91,9 +95,12 @@ export class QuestionCheckboxComponent implements OnInit {
 
     if (this.answerValues.filter(item => item == "true").length == 2) {
       counter +=1;
+      this.correctAnswers += 1;
       this.updateCorrectAnswerAmount.emit(counter);
+      this.router.navigate(["../result", this.correctAnswers], {relativeTo: this.route});
     } else {
       this.updateCorrectAnswerAmount.emit(counter);
+      this.router.navigate(["../result", this.correctAnswers], {relativeTo: this.route});
     }
   }
 }

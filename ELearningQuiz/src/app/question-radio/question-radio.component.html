@@ -9,6 +9,7 @@
       Frage <span>{{ question.id }}/3</span>
     </h4>
     <h2 class="text-4xl font-bold text-center">{{ question.title }}</h2>
+    <p class="text-center mt-2">Bitte wähle eine Antwort aus.</p>
   </div>
 
   <!-- Antwortmöglichkeiten -->
@@ -101,7 +102,7 @@
       (click)="calculateResult()"
       [ngClass]="showSubmitButton == true ? '' : 'hide'"
     >
-      Absenden
+      Frage überprüfen
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-6 w-6 ml-2"

@@ -1,0 +1,104 @@
+<div class="mx-40">
+  <img class="w-24 mb-10 mt-3" src="./assets/images/Bild1.jpg" />
+
+  <div class="flex items-center mb-8 spacing">
+    <div class="basis-3/5">
+      <h2 class="text-3xl mb-2 font-bold">Gin&Co GmbH E-Training</h2>
+      <h3 class="text-2xl mb-2 text-aqua">
+        Datenschutz & Informationssicherheit
+      </h3>
+      <p>
+        Willkommen auf der Quiz Plattform des E-Trainings über Datenschutz &
+        Informationssicherheit. Du hast erfolgreich das Lernvideo über das Thema
+        "Die Gefahren von Shouldersurfing im <strong>Büro</strong>" angesehen und möchtest nun dein
+        neues Wissen zur Schau stellen?
+        <br />
+        <br />
+        Dann bist du hier genau richtig!
+        <br />
+        Drück auf den Button und das Quiz beginnt.
+      </p>
+    </div>
+    <div class="w-80">
+      <img class="inline ml-40" src="./assets/images/Bild2.svg" />
+    </div>
+  </div>
+  <div class="flex flex-col justify-content content-center">
+    <div [ngClass]="showProgress == true ? '' : 'hide'">
+      <h2
+        class="text-3xl mt-16 mb-2 font-bold text-center underline decoration-orange-400"
+      >
+        Dein Fortschritt:
+      </h2>
+      <h3 class="text-2xl mb-8 text-center font-bold">
+        <span class="text-aqua">1/3</span> Quizzes erledigt
+      </h3>
+      <div class="flex">
+        <div class="m-auto">
+          <a
+            routerLink="/download"
+            class="hovering bg-orange-400 text-white px-4 py-3 rounded-md hover:bg-orange-500"
+          >
+            Teil-Zertifikat downloaden
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex mt-8">
+      <div class="m-auto">
+        <img class="w-12" src="./assets/images/down-arrow.png" />
+      </div>
+    </div>
+
+    <h2 class="text-3xl mt-6 mb-2 font-bold text-center text-aqua">HOW TO</h2>
+    <div class="flex flex-col mx-40">
+      <div class="flex mt-6">
+        <div class="flex-none mr-6">1.</div>
+        <div>
+          Das E-Training besteht aus drei Modulen, die verschiedene Inhalte aus
+          dem Bereich des Datenschutz und der Informationssicherheit behandeln.
+        </div>
+      </div>
+      <div class="flex mt-6">
+        <div class="flex-none mr-6">2.</div>
+        <div class="flex-auto">
+          Für jedes der drei Module gibt es eine Wissensvermittlung, welche über
+          ein Lernvideo vermittelt wird. Dafür musst du nur in den dazugehörigen
+          Raum gehen und den dort angebrachten QR-Code scannen.
+          <br />
+          <br />
+          Tipp: Schau doch mal in der <strong>Brennerei</strong> :)
+        </div>
+      </div>
+      <div class="flex mt-6">
+        <div class="flex-none mr-6">3.</div>
+        <div class="flex-auto">
+          Im Anschluss an das Video kann das dazugehörige Quiz gestartet werden.
+        </div>
+      </div>
+      <div class="flex mt-6">
+        <div class="flex-none mr-6">4.</div>
+        <div class="flex-auto">
+          Um das E-Training erfolgreich zu beenden müssen alle drei Quizzes
+          bestanden werden. Im Anschluss daran kannst du dir dein Zertifikat auf
+          dieser Plattform herunterladen.
+          <br />
+          <br />
+          Tipp: Das Zertifikat bringt dir neben der Bestätigung deines neuen
+          Wissen auch noch einen weiteren Vorteil.
+        </div>
+      </div>
+    </div>
+    <div class="flex mt-16 mb-16">
+      <div class="m-auto">
+        <a
+          routerLink="{{ quizLink }}"
+          class="hovering bg-orange-400 text-white px-4 py-3 rounded-md hover:bg-orange-500"
+        >
+          Quiz starten
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
